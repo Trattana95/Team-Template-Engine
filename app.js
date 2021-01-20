@@ -36,7 +36,8 @@ function init() {
         message: "What is the manager's office number?"
     }
 
-    ]).then((data)=> {   
+    ]).then(({managerName, managerId, managerEmail, officeNumber})=> {
+        
     let manager = new Manager(managerName, managerId, managerEmail, officeNumber)
     teamMembers.push(manager);
     addTeam();
@@ -62,7 +63,7 @@ function addTeam() {
         } else if (data.memberChoice === "Intern"){
             intern();
 
-        } else if (createTeam());
+        } else (createTeam());
     });
 };
 
@@ -89,7 +90,7 @@ function engineer() {
             message: "What is the engineer's GitHub username?"
         }
     ]). then((data) => {
-        let engineer = new Engineer(engineerName, engineerId, engineerEmail, engineerGithub);
+        let engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.engineerGithub);
         teamMembers.push(engineer);
         addTeam();
     });
@@ -118,7 +119,7 @@ function intern() {
             message: "What school is intern from?"
         }
     ]). then((data) => {
-        let intern = new Intern(internName, internId, internEmail, internSchool);
+        let intern = new Intern(data.internName, data.internId, data.internEmail, data.internSchool);
         teamMembers.push(intern);
         addTeam();
     });
