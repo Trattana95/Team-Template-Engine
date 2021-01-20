@@ -36,9 +36,9 @@ function init() {
         message: "What is the manager's office number?"
     }
 
-    ]).then(({managerName, managerId, managerEmail, officeNumber})=> {
+    ]).then((data)=> {
         
-    let manager = new Manager(managerName, managerId, managerEmail, officeNumber)
+    let manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.officeNumber)
     teamMembers.push(manager);
     addTeam();
     });
