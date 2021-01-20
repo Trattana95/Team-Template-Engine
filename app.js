@@ -10,7 +10,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-const teamMembers = [];
+let teamMembers = [];
 
 function init() {
     inquirer.prompt([    
@@ -36,8 +36,7 @@ function init() {
         message: "What is the manager's office number?"
     }
 
-    ]).then(({managerName, managerId, managerEmail, officeNumber})=> {
-        
+    ]).then((data)=> {   
     let manager = new Manager(managerName, managerId, managerEmail, officeNumber)
     teamMembers.push(manager);
     addTeam();
@@ -62,7 +61,7 @@ function addTeam() {
 
         } else if (data.memberChoice === "Intern"){
             intern();
-            
+
         } else if (createTeam());
     });
 };
@@ -90,7 +89,7 @@ function engineer() {
             message: "What is the engineer's GitHub username?"
         }
     ]). then((data) => {
-        let engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.engineerGithub);
+        let engineer = new Engineer(engineerName, engineerId, engineerEmail, engineerGithub);
         teamMembers.push(engineer);
         addTeam();
     });
@@ -119,7 +118,7 @@ function intern() {
             message: "What school is intern from?"
         }
     ]). then((data) => {
-        let intern = new Intern(data.internName, data.internId, data.internEmail, data.internSchool);
+        let intern = new Intern(internName, internId, internEmail, internSchool);
         teamMembers.push(intern);
         addTeam();
     });
