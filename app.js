@@ -63,7 +63,11 @@ function addTeam() {
         } else if (data.memberChoice === "Intern"){
             intern();
 
-        } else (createTeam());
+
+            // createTeam not rendering into html file not sure why manager isnt showing 
+        } else if (data.memberChoice === "I don't want to add any more team members") {
+        createTeam(outputPath, render(teamMembers));
+        }
     });
 };
 
@@ -126,11 +130,12 @@ function intern() {
 };
 
 
-function createTeam() {
-    const teamArray = render(teamMembers);
-    fs.writeFile(outputPath, teamArray , (err) =>
+// function to create Team HTML not working, 
+//  function createTeam() {
+//     const team = render(teamMembers);
+//     fs.writeFile(outputPath, team , (err) =>
     
-      err ? console.log(err) : console.log("Success!"));
-}
+//       err ? console.log(err) : console.log("Success!"));
+// }
 
 init();
