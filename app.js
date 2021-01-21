@@ -36,7 +36,7 @@ function init() {
         message: "What is the manager's office number?"
     }
 
-    ]).then((data)=> {
+    ]).then((data) => {
         
     let manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.officeNumber)
     teamMembers.push(manager);
@@ -131,11 +131,11 @@ function intern() {
 
 
 // function to create Team HTML not working, 
-//  function createTeam() {
-//     const team = render(teamMembers);
-//     fs.writeFile(outputPath, team , (err) =>
+ function createTeam() {
+    const team = render(teamMembers);
+    fs.writeFile(outputPath, team , (err) =>
     
-//       err ? console.log(err) : console.log("Success!"));
-// }
+      err ? console.log(err) : console.log("Success!"));
+}
 
 init();
